@@ -1,34 +1,34 @@
-
-import { fetchReposFromGitHub } from "../lib/github";
+import { projects } from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 
-export default async function Home() {
-  const repos = await fetchReposFromGitHub();
-  const filtered = repos.filter((repo: any) => !repo.archived && !repo.private);
-
+export default function Home() {
   return (
-    <main className="p-4">
-      <div className="text-center my-16">
-        <h1 className="text-5xl font-bold text-pink-700 dark:text-pink-300 mb-4">🔥 JJIN의 GitHub 레포 허브</h1>
-        <p className="text-xl text-pink-600 dark:text-pink-400">
-          개발자로서의 여정을 담은 프로젝트 모음
+    <main className="flex flex-col items-center min-h-screen bg-gray-100 dark:bg-gray-900 pb-16">
+      <div className="text-center mt-16 mb-10 w-full">
+        <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+          🔥 ziny 개발실
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400">
+          아이디어와 코드를 기록하는 공간
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-        {filtered.map((repo: any) => (
-          <ProjectCard
-            key={repo.id}
-            title={repo.name}
-            description={repo.description}
-            url={repo.homepage || repo.html_url}
-            image={repo.owner.avatar_url}
-          />
-        ))}
+      <div className="w-full flex justify-center">
+        <div className="w-full max-w-6xl" style={{ width: "70%" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.title}
+                title={project.title}
+                description={project.description}
+                url={project.url}
+                image={project.image}
+                repo={project.repo}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );
 }
-
-export const revalidate = 3600;
-
