@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "ziny 개발실",
     images: [
       {
-        url: "/og-main.png",
+        url: "images/og-main.png",
         width: 1200,
         height: 630,
         alt: "ziny 개발실 대표 이미지",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       "ziny의 개발 프로젝트와 아이디어를 모아놓은 공간. AI, 웹, 유틸리티 등 다양한 개발 결과물을 한눈에 확인하세요.",
     images: [
       {
-        url: "/og-main.png",
+        url: "images/og-main.png",
         alt: "ziny 개발실 대표 이미지",
       },
     ],
